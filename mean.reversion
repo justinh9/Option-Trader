@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
+
 def calculate_zscore(series, window_size=20):
-    # Calculate the z-score of each value in the series using a specified window size for the mean calculation
     rolling_mean = series.rolling(window=window_size).mean()
     rolling_std = series.rolling(window=window_size).std()
     return (series - rolling_mean) / rolling_std
@@ -10,18 +10,17 @@ def calculate_zscore(series, window_size=20):
 def generate_trades(data, zscore_threshold=1.0):
     trades = []  # List to store the trading signals
 
-    # Calculate the z-score for the data
     data['zscore'] = calculate_zscore(data['Close'])
 
-    # Generate trading signals based on the z-score
+    # Generating trading signals based on the z-score
     data['signal'] = np.where(data['zscore'] > zscore_threshold, -1, np.nan)
     data['signal'] = np.where(data['zscore'] < -zscore_threshold, 1, data['signal'])
 
-    # Determine the entry and exit points for the trades
+    # Determining the entry and exit points for the trades
     data['position'] = data['signal'].ffill().fillna(0)
     data['entry_exit'] = data['position'].diff()
 
-    # Generate the trades based on entry and exit points
+    # Generating the trades based on entry and exit points
     for index, row in data.iterrows():
         if row['entry_exit'] == 1:
             trades.append(('Buy', row['Close']))
@@ -29,9 +28,9 @@ def generate_trades(data, zscore_threshold=1.0):
             trades.append(('Sell', row['Close']))
 
     return trades
+e
+data = pd.read_csv('historical_data.csv')  # Here, I am backtesting and will implement connecting to the Alpha Vantage API once backtesting is done.
 
-# Example usage
-data = pd.read_csv('historical_data.csv')  # Replace with your own data file
 
 trades = generate_trades(data)
 for trade in trades:
