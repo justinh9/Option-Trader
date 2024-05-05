@@ -1,7 +1,3 @@
-# Option-Trader
-Pricing and Trading European Put and Call Options
-
-
 Gold and Silver Options Trading Bot
 ===================================
 
@@ -24,9 +20,21 @@ Requirements
 
 *   Python 3.x
 *   Alpha Vantage API key (Get it here)
+
+Contributing
+------------
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+-------
+
+This project is not currently under any license as this project is solely for self-educational purposes. 
 
 Acknowledgments
-The Black-Scholes Model: Wikipedia
-Alpha Vantage API: Alpha Vantage
+---------------
+
+*   The Black-Scholes Model: [Wikipedia](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model)
+*   Alpha Vantage API: [Alpha Vantage](https://www.alphavantage.co)
+
+
