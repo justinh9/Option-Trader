@@ -19,7 +19,7 @@ Requirements
 ------------
 
 *   Python 3.x
-*   Alpha Vantage API key (Get it here)
+*   Alpha Vantage API key (Get it [here](https://www.alphavantage.co/))
 
 Contributing
 ------------
